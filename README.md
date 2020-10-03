@@ -1,3 +1,7 @@
+*This repo adds the color change script from the [arc-design repo](https://github.com/arc-design/arc-theme/) to the [repo maintained by jnsh](https://github.com/jnsh/arc-theme/). More info can be found in this [issue in jnsh's repo](https://github.com/jnsh/arc-theme/issues/47).*
+
+*The script works basically as is, but I've made some tweaks so it plays nicer with Arc Dark (it also now builds Arc Dark, not Arc Darker).*
+
 # Arc Theme
 
 Arc is a flat theme with transparent elements for GTK 3, GTK 2 and various desktop shells, window managers and applications. It's well suited for GTK based desktop environments such as GNOME, Cinnamon, Xfce, Unity, MATE, Budgie etc.
