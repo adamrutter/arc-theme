@@ -160,7 +160,7 @@ for FILEPATH in "${PATHLIST[@]}"; do
 			-e 's/#f5f6f7/%BG%/gI' \
 			-e 's/#dde3e9/%BG_DARKER%/gI' \
 			-e 's/#3b3e45/%FG%/gI' \
-			-e 's/#FFFFFF/%TXT_BG%/gI' \
+			-e 's/#FFFFFF/%SEL_FG%/gI' \
 			-e 's/#3b3e45/%TXT_FG%/gI' \
 			-e 's/#5294e2/%SEL_BG%/gI' \
 			-e 's/#fcfdfd/%BTN_BG%/gI' \
@@ -197,8 +197,8 @@ for FILEPATH in "${PATHLIST[@]}"; do
 			-e 's/#BAC3CF/%HDR_FG%/gI' \
 			-e 's/#4B5162/%TXT_FG%/gI' \
 			-e 's/#AFB8C5/%HDR_FG%/gI' \
-			-e 's/#404552/%HDR_BG%/gI' \
-			-e 's/#383C4A/%HDR_BG%/gI' \
+			-e 's/#404552/%TXT_BG%/gI' \
+			-e 's/#383C4A/%BG%/gI' \
 			-e 's/#5c616c/%FG%/gI' \
 			-e 's/#d3d8e2/%SEL_BG%/gI' \
 			-e 's/#b7c0d3/%SEL_BG%/gI' \
@@ -305,14 +305,14 @@ fi
 
 echo "== Making theme..."
 mkdir distrib
-./autogen.sh --prefix="$(readlink -e ./distrib/)" --disable-light --disable-dark "${AUTOGEN_OPTS}"
+./autogen.sh --prefix="$(readlink -e ./distrib/)" --disable-light --disable-darker --disable-lighter "${AUTOGEN_OPTS}"
 make --jobs="${JOBS:-$(nproc || echo 1)}" install
 echo
 
 echo
 rm -fr "${DEST_PATH}"
 if [[ "$ARC_TRANSPARENCY" == "false" ]]; then
-	mv ./distrib/share/themes/Arc-Darker-solid "${DEST_PATH}"
+	mv ./distrib/share/themes/Arc-Dark-solid "${DEST_PATH}"
 	if [[ -d ./distrib/share/themes/Arc-solid/cinnamon ]] ; then
 		mv ./distrib/share/themes/Arc-solid/cinnamon "${DEST_PATH}"/cinnamon
 	fi
@@ -320,7 +320,7 @@ if [[ "$ARC_TRANSPARENCY" == "false" ]]; then
 		mv ./distrib/share/themes/Arc-solid/gnome-shell "${DEST_PATH}"/gnome-shell
 	fi
 else
-	mv ./distrib/share/themes/Arc-Darker "${DEST_PATH}"
+	mv ./distrib/share/themes/Arc-Dark "${DEST_PATH}"
 	if [[ -d ./distrib/share/themes/Arc/cinnamon ]] ; then
 		mv ./distrib/share/themes/Arc/cinnamon "${DEST_PATH}"/cinnamon
 	fi
@@ -341,4 +341,3 @@ cp ./gtk-2.0/assets/null.png ./gtk-2.0/assets/line-h.png
 echo "== The theme was installed to ${DEST_PATH}"
 echo
 exit 0
-
